@@ -1,0 +1,14 @@
+[Unit]
+Description=wxcrm a simple customer information import tool
+Documentation=https://wiki.dm-ai.cn/pages/viewpage.action?pageId=307528387
+After=network.target remote-fs.target nss-lookup.target
+ 
+[Service]
+Type=simple
+ExecStart=/webapp/crm/wxcrm -c /webapp/crm/wxcrm.conf
+ExecReload=/usr/bin/pkill wxcrm && /webapp/crm/wxcrm -c /webapp/crm/wxcrm.conf
+ExecStop=/usr/bin/pkill wxcrm
+PrivateTmp=true
+ 
+[Install]
+WantedBy=multi-user.target
